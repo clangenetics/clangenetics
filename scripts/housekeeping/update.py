@@ -61,7 +61,7 @@ def download_file(url: str):
 
 def get_update_url():
     if get_update_url.value is None:
-        fetch_url = "https://raw.githubusercontent.com/Thlumyn/clangen/development/verification/update_api_url.txt"
+        fetch_url = "https://raw.githubusercontent.com/clangenetics/clangenetics/development/verification/update_api_url.txt"
         result = configured_get_request(fetch_url)
         get_update_url.value = result.text
     return get_update_url.value
@@ -76,6 +76,7 @@ def get_latest_version_number():
 
 
 def has_update(update_channel: UpdateChannel):
+    return False # Disable updater for now
     latest_endpoint = f"{get_update_url()}/v1/Update/Channels/{update_channel.value}/Releases/Latest"
     result = configured_get_request(latest_endpoint)
 
